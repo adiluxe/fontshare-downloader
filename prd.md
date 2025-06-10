@@ -3,10 +3,13 @@
 ## Project Overview
 
 ### Problem Statement
+
 Fontshare.com offers high-quality free fonts but lacks a bulk download feature, requiring users to download fonts individually. This project aims to create an automated tool to download all available fonts from their library.
 
 ### Solution
+
 Develop a web scraper and downloader that:
+
 1. Discovers all available fonts on Fontshare
 2. Downloads each font using their API endpoint
 3. Organizes downloaded fonts in a structured manner
@@ -16,14 +19,16 @@ Develop a web scraper and downloader that:
 ### Core Functionality
 
 #### 1. Font Discovery
+
 - **Objective**: Identify all available fonts in Fontshare's library
-- **Approach**: 
+- **Approach**:
   - Scrape the main Fontshare website to extract font names
   - Parse the website's JavaScript/JSON data for font listings
   - Handle pagination if fonts are loaded dynamically
 - **Output**: List of all font names/slugs
 
 #### 2. Font Download
+
 - **API Endpoint**: `https://api.fontshare.com/v2/fonts/download/{font-name}`
 - **Method**: GET request to download zip files
 - **Features**:
@@ -33,7 +38,8 @@ Develop a web scraper and downloader that:
   - Resume capability for interrupted downloads
 
 #### 3. File Organization
-- **Structure**: 
+
+- **Structure**:
   ```
   downloads/
   ├── fonts/
@@ -52,10 +58,12 @@ Develop a web scraper and downloader that:
 ### Technical Stack
 
 #### Programming Language
+
 - **Python** (recommended for web scraping and file handling)
 - **Alternative**: Node.js with TypeScript
 
 #### Core Libraries (Python)
+
 - `requests` - HTTP requests for API calls
 - `beautifulsoup4` - HTML parsing for font discovery
 - `selenium` - JavaScript-heavy page scraping (if needed)
@@ -65,6 +73,7 @@ Develop a web scraper and downloader that:
 - `pathlib` - File path handling
 
 #### Core Libraries (Node.js Alternative)
+
 - `axios` - HTTP requests
 - `cheerio` - HTML parsing
 - `puppeteer` - Browser automation (if needed)
@@ -74,7 +83,9 @@ Develop a web scraper and downloader that:
 ### Implementation Steps
 
 #### Phase 1: Research & Discovery (Day 1)
+
 1. **Website Analysis**
+
    - Inspect Fontshare's website structure
    - Identify how fonts are loaded (static HTML vs dynamic JavaScript)
    - Find the source of font listings (API endpoints, embedded JSON, etc.)
@@ -86,28 +97,31 @@ Develop a web scraper and downloader that:
    - Identify any pagination or lazy loading
 
 #### Phase 2: Core Development (Days 2-3)
+
 1. **Font Discovery Module**
+
    ```python
    class FontDiscovery:
        def get_all_fonts(self) -> List[str]:
            """Extract all font names from Fontshare"""
            pass
-       
+
        def validate_font_exists(self, font_name: str) -> bool:
            """Verify font exists before download"""
            pass
    ```
 
 2. **Download Manager**
+
    ```python
    class FontDownloader:
        def __init__(self, rate_limit: float = 1.0):
            self.rate_limit = rate_limit
-       
+
        async def download_font(self, font_name: str) -> bool:
            """Download individual font"""
            pass
-       
+
        async def download_all(self, font_list: List[str]):
            """Download all fonts with concurrency control"""
            pass
@@ -125,7 +139,9 @@ Develop a web scraper and downloader that:
    ```
 
 #### Phase 3: Enhancement (Day 4)
+
 1. **Error Handling & Resilience**
+
    - Retry failed downloads
    - Handle network timeouts
    - Resume interrupted batch downloads
@@ -140,6 +156,7 @@ Develop a web scraper and downloader that:
 ### User Interface
 
 #### Command Line Interface
+
 ```bash
 # Basic usage
 python fontshare_downloader.py
@@ -153,6 +170,7 @@ python fontshare_downloader.py \
 ```
 
 #### Expected Output
+
 ```
 Fontshare Bulk Downloader v1.0
 ===============================
@@ -174,19 +192,22 @@ Progress: [███████████████████████
 ### Risk Mitigation
 
 #### Rate Limiting
+
 - **Risk**: Getting IP banned for aggressive downloading
 - **Mitigation**: Implement configurable delays between requests (default: 1 second)
 
 #### Website Changes
+
 - **Risk**: Fontshare changing their structure or API
-- **Mitigation**: 
+- **Mitigation**:
   - Modular design for easy updates
   - Multiple discovery methods as fallbacks
   - Version the scraping logic
 
 #### Legal Considerations
+
 - **Risk**: Terms of service violations
-- **Mitigation**: 
+- **Mitigation**:
   - Review Fontshare's ToS
   - Implement respectful scraping practices
   - Add disclaimer about usage rights

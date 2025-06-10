@@ -14,6 +14,7 @@ A Python tool to download all fonts from [Fontshare.com](https://www.fontshare.c
 ## Installation
 
 1. **Clone or download this repository**
+
    ```bash
    cd /path/to/fonshare-download-all
    ```
@@ -26,11 +27,13 @@ A Python tool to download all fonts from [Fontshare.com](https://www.fontshare.c
 ## Usage
 
 ### Basic Usage
+
 ```bash
 python fontshare_downloader.py
 ```
 
 This will:
+
 - Create a `downloads` folder in the current directory
 - Discover all fonts from Fontshare
 - Download each font as a ZIP file
@@ -61,12 +64,12 @@ python fontshare_downloader.py \
 
 ### Command Line Options
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--output-dir`, `-o` | Output directory for downloads | `./downloads` |
-| `--rate-limit`, `-r` | Delay between requests (seconds) | `1.0` |
-| `--max-concurrent`, `-c` | Maximum concurrent downloads | `3` |
-| `--verbose`, `-v` | Enable verbose logging | `False` |
+| Option                   | Description                      | Default       |
+| ------------------------ | -------------------------------- | ------------- |
+| `--output-dir`, `-o`     | Output directory for downloads   | `./downloads` |
+| `--rate-limit`, `-r`     | Delay between requests (seconds) | `1.0`         |
+| `--max-concurrent`, `-c` | Maximum concurrent downloads     | `3`           |
+| `--verbose`, `-v`        | Enable verbose logging           | `False`       |
 
 ## Output Structure
 
@@ -90,11 +93,13 @@ downloads/
 ## How It Works
 
 1. **Font Discovery**: The tool visits Fontshare and discovers all available fonts through multiple strategies:
+
    - Checking for API endpoints that list fonts
    - Parsing the website for embedded font data
    - Using a fallback list of known fonts
 
 2. **Download Process**: For each discovered font, it:
+
    - Constructs the download URL: `https://api.fontshare.com/v2/fonts/download/{font-name}`
    - Downloads the font ZIP file
    - Saves it in an organized directory structure
@@ -126,6 +131,7 @@ Downloading fonts: 100%|████████████| 127/127 [05:23<00:
 ## Rate Limiting & Ethics
 
 This tool implements rate limiting to be respectful to Fontshare's servers:
+
 - Default 1-second delay between downloads
 - Configurable concurrent download limits
 - Respectful user-agent and request patterns
@@ -135,16 +141,19 @@ Please use this tool responsibly and respect Fontshare's terms of service.
 ## Troubleshooting
 
 ### No fonts discovered
+
 - Check your internet connection
 - Fontshare might have changed their website structure
 - The tool will fall back to a known list of popular fonts
 
 ### Download failures
+
 - Some fonts might be temporarily unavailable
 - Check the log file for detailed error information
 - Failed downloads can be retried by running the tool again
 
 ### Permission errors
+
 - Make sure you have write permissions in the output directory
 - On Windows, you might need to run as administrator
 
@@ -155,6 +164,7 @@ All fonts downloaded are subject to Fontshare's licensing terms. Please review t
 ## Contributing
 
 Feel free to contribute improvements:
+
 - Better font discovery methods
 - Additional output formats
 - GUI interface

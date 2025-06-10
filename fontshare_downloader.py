@@ -159,13 +159,13 @@ class FontshareDownloader:
         # Look for font names in href attributes
         href_pattern = r'href="[^"]*?/([a-z-]+)"'
         font_candidates = re.findall(href_pattern, html)
-        
-        # Filter out non-font URLs (basic heuristic)
+          # Filter out non-font URLs (basic heuristic)
         fonts = [name for name in font_candidates 
                 if len(name) > 2 and '-' in name and not name.startswith('www')]
         
         return list(set(fonts)) if fonts else []
-          def _get_fallback_fonts(self) -> List[str]:
+    
+    def _get_fallback_fonts(self) -> List[str]:
         """Return a list of known Fontshare fonts as fallback."""
         try:
             from font_list import FONTSHARE_FONTS, POTENTIAL_FONTS
